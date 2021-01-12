@@ -5,24 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Daniel_Kasprów_lista_7"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="592" Width="480">
+    <Window.Background>
+        <LinearGradientBrush MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Color="LightCyan" Offset="0"/>
+            <GradientStop Color="LightBlue" Offset="0.5"/>
+            <GradientStop Color="Black" Offset="1.1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type local:Photo}">
+            <Border Margin="3">
+                <Image Source="{Binding Source}"/>
+            </Border>
+        </DataTemplate>
+        <!-- .... other resources .... -->
+
+    <!--A Style that affects all TextBlocks-->
+    <Style TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    
+    <!--A Style that extends the previous TextBlock Style with an x:Key of TitleText-->
+    <Style BasedOn="{StaticResource {x:Type TextBlock}}"
+           TargetType="TextBlock"
+           x:Key="TitleText">
+        <Setter Property="FontSize" Value="26"/>
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0,1">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0.0" Color="#90DDDD" />
+                        <GradientStop Offset="1.0" Color="Red" />
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</Window.Resources>
     <Grid>
-        <ToggleButton Checked="ToggleButton_Checked">
-            <ToggleButton.Triggers>
-                <EventTrigger RoutedEvent="ToggleButton.Checked">
-                    <BeginStoryboard x:Name="storyboard">
-                        <Storyboard RepeatBehavior="Forever"
-                            AutoReverse="True">
-                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
-                                     To="0.2"
-                                     Duration="0:0:1" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="ToggleButton.Unchecked">
-                    <StopStoryboard BeginStoryboardName="storyboard" />
-                </EventTrigger>
-            </ToggleButton.Triggers>
-        </ToggleButton>
+        <StackPanel>
+            <Image Width="300" Height="400" Name="Zdjecie" />
+            <TextBlock Style="{StaticResource TitleText}" Name="textblock1">Wesołych Świąt</TextBlock>
+            <TextBlock >Check out my new pictures!</TextBlock>
+        </StackPanel>
     </Grid>
 </Window>

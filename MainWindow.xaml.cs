@@ -23,6 +23,7 @@ namespace Daniel_Kasprów_lista_7
         public MainWindow()
         {
             InitializeComponent();
+            Zdjecie.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + "\\image1.png" + ""));
         }
 
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
