@@ -5,51 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Daniel_Kasprów_lista_7"
         mc:Ignorable="d"
-        Title="MainWindow" Height="592" Width="480">
+        Title="MainWindow" Height="592" Width="480" Name="window" Style="{StaticResource Okno}">
+
     <Window.Background>
         <LinearGradientBrush MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" EndPoint="0.5,1">
-            <GradientStop Color="LightCyan" Offset="0"/>
+            <GradientStop Color="LightCyan" Offset="1"/>
             <GradientStop Color="LightBlue" Offset="0.5"/>
-            <GradientStop Color="Black" Offset="1.1"/>
+            <GradientStop Color="Gray" Offset="-0.1"/>
         </LinearGradientBrush>
     </Window.Background>
     <Window.Resources>
-        <DataTemplate DataType="{x:Type local:Photo}">
-            <Border Margin="3">
-                <Image Source="{Binding Source}"/>
-            </Border>
-        </DataTemplate>
-        <!-- .... other resources .... -->
 
-    <!--A Style that affects all TextBlocks-->
-    <Style TargetType="TextBlock">
-        <Setter Property="HorizontalAlignment" Value="Center" />
-        <Setter Property="FontFamily" Value="Comic Sans MS"/>
-        <Setter Property="FontSize" Value="14"/>
-    </Style>
-    
-    <!--A Style that extends the previous TextBlock Style with an x:Key of TitleText-->
-    <Style BasedOn="{StaticResource {x:Type TextBlock}}"
-           TargetType="TextBlock"
-           x:Key="TitleText">
-        <Setter Property="FontSize" Value="26"/>
-        <Setter Property="Foreground">
-            <Setter.Value>
-                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0,1">
-                    <LinearGradientBrush.GradientStops>
-                        <GradientStop Offset="0.0" Color="#90DDDD" />
-                        <GradientStop Offset="1.0" Color="Red" />
-                    </LinearGradientBrush.GradientStops>
-                </LinearGradientBrush>
-            </Setter.Value>
-        </Setter>
-    </Style>
-</Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <Style x:Key="Base" TargetType="{x:Type Control}">
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0,1">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0.0" Color="#90DDDD" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
-        <StackPanel>
-            <Image Width="300" Height="400" Name="Zdjecie" />
-            <TextBlock Style="{StaticResource TitleText}" Name="textblock1">Wesołych Świąt</TextBlock>
-            <TextBlock >Check out my new pictures!</TextBlock>
-        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+
+
+        </Grid.RowDefinitions>
+        <Image Width="250" Height="350" Name="Zdjecie" Grid.Row="0" Grid.RowSpan="3"/>
+        <Image Width="100" Height="100" Margin="0,0,0,-250" Name="Bombki1" Grid.Row="0"/>
+        <Image Width="140" Height="150" Margin="0,0,0,-85" Name="Bombki2" Grid.Row="1"/>
+        <Image Width="180" Height="200" Margin="0,0,0,80" Name="Bombki3" Grid.Row="2"/>
+        <TextBox Style="{StaticResource Base}" Grid.Row="4" Text="Wesołych Świat" BorderThickness="0" Background="Transparent"/>
+        <Label Style="{StaticResource Base}" Grid.Row="3" Content="Wesołych Świąt" Foreground="Red"/>
     </Grid>
 </Window>
