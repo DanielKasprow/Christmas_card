@@ -4,12 +4,8 @@
              xmlns:local="clr-namespace:Daniel_Kasprów_lista_7"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="Gray" />
-            <Setter Property="FontSize" Value="24" />
-        </Style>
         <Style TargetType="Window" x:Key="Okno">
-            <Setter Property="WindowStyle" Value="ToolWindow"/>
+            <Setter Property="WindowStyle" Value="None"/>
         </Style>
     </Application.Resources>
 </Application>

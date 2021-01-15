@@ -16,6 +16,10 @@
     </Window.Background>
     <Window.Resources>
 
+        <Style x:Key="podstawowy" BasedOn="{StaticResource Base}">
+            
+        </Style>
+               
         <Style TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
@@ -56,6 +60,6 @@
         <Image Width="140" Height="150" Margin="0,0,0,-85" Name="Bombki2" Grid.Row="1"/>
         <Image Width="180" Height="200" Margin="0,0,0,80" Name="Bombki3" Grid.Row="2"/>
         <TextBox Style="{StaticResource Base}" Grid.Row="4" Text="Wesołych Świat" BorderThickness="0" Background="Transparent"/>
-        <Label Style="{StaticResource Base}" Grid.Row="3" Content="Wesołych Świąt" Foreground="Red"/>
+        <Label Style="{StaticResource Base}" Grid.Row="3" Content="Wesołych Świąt" />
     </Grid>
 </Window>

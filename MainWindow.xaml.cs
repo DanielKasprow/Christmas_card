@@ -42,7 +42,7 @@ namespace Daniel_Kasprów_lista_7
                 To = 0.5,
                 Duration = new Duration(TimeSpan.FromMilliseconds(lenght)),
                 AutoReverse = true,
-                RepeatBehavior = new RepeatBehavior(int.MaxValue)
+                RepeatBehavior = RepeatBehavior.Forever
             };
             Storyboard storyboard = new Storyboard();
             storyboard.Children.Add(opacityAnimation);
